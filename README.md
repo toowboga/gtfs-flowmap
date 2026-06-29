@@ -71,11 +71,13 @@ Zur besseren Lesbarkeit kann die Darstellung dynamisch angepasst werden:
 
 ### Kategorische & Zeitliche Filter
 
-Die Verkehrsströme können nach verschiedenen Kriterien eingegrenzt werden:
+Die Verkehrsströme können (theoretisch) nach verschiedenen Kriterien eingegrenzt werden.
 
 * **Zugtyp:** Trennung von Hochgeschwindigkeitsnetz (ICE) und Ergänzungsnetz (IC/EC).
 * **Betreiber (Agency):** Vergleich von Marktanteilen (z. B. Deutsche Bahn, ÖBB, Flixtrain etc.).
 * **Zeiträume:** Analyse der Tagesdynamik (z. B. Tageszeit, Wochentag, Woche).
+
+> *Hinweis:* Davon ist bisher nur der Filter für **Betreiber** implementiert.
 
 ## Datenbasis
 
