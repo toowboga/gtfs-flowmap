@@ -33,7 +33,7 @@ python -m http.server 8000
 ```
 Öffne anschließend den Browser unter `http://localhost:8000/vis/` (bzw. `http://localhost:8000/`, falls der Server im `vis` Ordner gestartet wurde).
 
-![Flowmap des deutschen Schienenfernverkehrs](Flowmap.png)
+![Flowmap des deutschen Schienenfernverkehrs](flowmap.png)
 
 ## Visualisierungskonzept
 
