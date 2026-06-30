@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowmaps - Deutscher Schienenfernverkehr</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="ui-container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border-color, #444); padding-bottom: 10px;">
+        <h1 style="margin: 0; border: none; padding: 0;">Flowmap: Schienenfernverkehr</h1>
+        <div class="RadioGroup" id="theme-radio-group">
+            <label class="RadioGroup__choice active" title="Light mode">
+                <input type="radio" name="theme" value="light" checked>
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                    <g stroke="currentColor" stroke-linejoin="round">
+                        <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM10 4.167V2.5M14.167 5.833l1.166-1.166M15.833 10H17.5M14.167 14.167l1.166 1.166M10 15.833V17.5M5.833 14.167l-1.166 1.166M5 10H3.333M5.833 5.833 4.667 4.667"></path>
+                    </g>
+                </svg>
+            </label>
+            <label class="RadioGroup__choice" title="Dark mode">
+                <input type="radio" name="theme" value="dark">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                    <path clip-rule="evenodd" d="M10 2.5h.328a6.25 6.25 0 0 0 6.6 10.372A7.5 7.5 0 1 1 10 2.493V2.5Z" stroke="currentColor"></path>
+                </svg>
+            </label>
+            <label class="RadioGroup__choice" title="System mode">
+                <input type="radio" name="theme" value="system">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <g stroke="currentColor">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M3 5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-16a1 1 0 0 1-1-1v-10zM7 20h10M9 16v4M15 16v4"></path>
+                    </g>
+                </svg>
+            </label>
+        </div>
+    </div>
+    <div class="control-group">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+            <label for="threshold">Minimum Fahrten/Tag:</label>
+            <span id="threshold-val" style="font-weight: bold;">5</span>
+        </div>
+        <input type="range" id="threshold" min="0" max="50" value="5" style="width: 100%;">
+    </div>
+    <div class="control-group" style="margin-top: 15px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+            <label for="cluster-radius">Räumliches Clustering:</label>
+            <span id="radius-val" style="font-weight: bold;">25 km</span>
+        </div>
+        <input type="range" id="cluster-radius" min="0" max="4" value="3" list="radius-markers" style="width: 100%;">
+        <datalist id="radius-markers">
+            <option value="0"></option>
+            <option value="1"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+            <option value="4"></option>
+        </datalist>
+        <div style="display: flex; justify-content: space-between; font-size: 11px; color: #888; padding-top: 2px; margin-top: -2px;">
+            <span>Aus</span>
+            <span>5 km</span>
+            <span>10 km</span>
+            <span>25 km</span>
+            <span>50 km</span>
+        </div>
+    </div>
+    <div class="control-group" style="margin-top: 15px;">
+        <div class="toggle-container">
+            <span class="toggle-label">Zeige Voronoi-Waben</span>
+            <label class="switch">
+                <input type="checkbox" id="voronoi-toggle" checked>
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+    <!-- Weitere Filter (Zugtyp, etc.) folgen hier -->
+    <div class="control-group" style="margin-top: 15px;">
+        <label>Zugbetreiber (Agencies):</label>
+        <div id="agency-filter-container" class="agency-chips">
+            <!-- Chips werden hier von main.js dynamisch geladen -->
+        </div>
+    </div>
+</div>
+
+<div id="map"></div>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script src="js/main.js"></script>
+</body>
+</html>
